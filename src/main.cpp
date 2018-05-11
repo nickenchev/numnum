@@ -17,9 +17,9 @@ int main(const int argc, const char *argv[])
     po::options_description desc("Usage: nn number\nAvailable options");
 	desc.add_options()
 		("help", "See this help screen")
-		("d", po::value<long>(), "Provide a decimal number")
-		("h", po::value<string>(), "Provide a hexidecimal number")
-		("b", po::value<string>(), "Provide a binary number");
+		("dec,D", po::value<long>(), "Provide a decimal number")
+		("hex,H", po::value<string>(), "Provide a hexidecimal number")
+		("bin,B", po::value<string>(), "Provide a binary number");
 
 	po::variables_map varmap;
 	po::store(po::parse_command_line(argc, argv, desc), varmap);
@@ -50,14 +50,6 @@ int main(const int argc, const char *argv[])
 		}
 		else
 		{
-			try
-			{
-				number = stoi(string(argv[1]));
-			}
-			catch (std::invalid_argument &ex)
-			{
-				cerr << "Not a valid integer" << endl;
-			}
 		}
 	}
 	return 0;
