@@ -75,7 +75,12 @@ void printBin(long number)
 	if (bitCount)
 	{
 		string binStr = bitset<32>(number).to_string();
-		cout << binStr << endl;
+		const int numBytes = binStr.length() / 8;
+		for (int i = 0; i < numBytes; ++i)
+		{
+			cout << binStr.substr(i * 8, 8) << ' ';
+		}
+		cout << endl;
 	}
 }
 
